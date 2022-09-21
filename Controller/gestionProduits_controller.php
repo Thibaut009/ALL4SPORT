@@ -8,9 +8,9 @@ if (isset($_GET['id'])) {
   $id = $_GET['id'];
   //On se sert de la variable GET pour récupérer l'entrée dans la table correspondant au membre choisi
   $produitById = $bdd->getProduitById($id);
-  require "../View/detailsProduit.php";
+  require "../View/ViewProduits/updateProduit.php";
   //Tu éxécute la requête, et fait un affichage classique...
 } else {
   $produits = $bdd->getProduits();
-  require "../View/view_produits.php";
+  require "../View/ViewProduits/gestionProduits.php";
 }
