@@ -20,18 +20,41 @@ body{
   padding: 0 20px;
 }
 
-.wrapper{
-  position: relative;
-  max-width: 1130px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.header {
+  position: absolute;
+  top: 10;
+  width: 80%;
+  height: 100px;
 }
 
-.wrapper .cart-nav{
+.lien-nav{
+  position: absolute;
+  left: 0;
+  top: 50px;
+  width: 180px;
+  background: #fff;
+  padding: 13px 15px;
+  border-radius: 3px;
+  display: flex;
+  cursor: pointer;
+  justify-content: space-evenly;
+  box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.15);
+}
+
+.rayon-nav{
+  display: flex;
+  position: absolute;
+  margin-left: 500px;
+  top: 50px;
+  padding: 13px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.cart-nav{
   position: absolute;
   right: 0;
-  top: -35%;
+  top: 50px;
   width: 130px;
   background: #fff;
   padding: 13px 15px;
@@ -66,11 +89,21 @@ body{
   border-radius: 50%;
 }
 
+.wrapper{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-top: 120px;
+  flex-wrap: wrap;
+  max-width: 1130px;
+}
+
 .wrapper .card{
   position: relative;
+  margin: 20px 20px 20px 20px;
   background: #fff;
   border-radius: 3px;
-  width: calc(33% - 13px);
+  width: calc(25% - 15px);
   overflow: hidden;
   box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.15);
 }
@@ -87,7 +120,7 @@ body{
 .wrapper .card .content{
   position: absolute;
   width: 100%;
-  bottom: -50%;
+  bottom: -60%;
   background: #fff;
   padding: 10px 20px 22px 20px;
   box-shadow: 0px -3px 10px 0px rgba(0,0,0,0.15);
@@ -172,20 +205,6 @@ body{
 button:hover{
   background: var(--main-hover-color);
   border-color: var(--main-hover-color);
-}
-
-.wrapper .lien-nav{
-  position: absolute;
-  left: 0;
-  top: -35%;
-  width: 180px;
-  background: #fff;
-  padding: 13px 15px;
-  border-radius: 3px;
-  display: flex;
-  cursor: pointer;
-  justify-content: space-evenly;
-  box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.15);
 }
 
 .link_gestion {

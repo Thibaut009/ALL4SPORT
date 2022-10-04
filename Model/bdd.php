@@ -2,7 +2,7 @@
 
 class Bdd
 {
-  private $bdd;
+  public $bdd;
 
   public function __construct()
   {
@@ -18,14 +18,23 @@ class Bdd
   }
 
 
-  public function getProduits()
+  // Rayon BDD
+  public function getRayon()
   {
-    $sql = "SELECT * FROM produits;";
+    $sql = "SELECT * FROM rayon";
     $query =  $this->bdd->prepare($sql);
     $query->execute();
     return $query->fetchAll();
   }
 
+  // Produits BDD
+  public function getProduits()
+  {
+    $sql = "SELECT * FROM produits";
+    $query =  $this->bdd->prepare($sql);
+    $query->execute();
+    return $query->fetchAll();
+  }
 
   public function getProduitById($id)
   {
@@ -38,6 +47,16 @@ class Bdd
     return $query->fetchAll();
   }
 
+  public function getProduitsByRayon($rayon)
+  {
+    $sql = "SELECT * 
+            FROM produits 
+            WHERE fk_rayon = ".$rayon;
+            
+    $query =  $this->bdd->prepare($sql);
+    $query->execute();
+    return $query->fetchAll();
+  }
 
   public function updateProduitById($id, $img, $nom, $prix, $dispo, $qte) 
   {
@@ -50,7 +69,6 @@ class Bdd
     return $query->fetchAll();
   }
 
-
   public function deleteProduitById($id)
   {
     $sql = "DELETE FROM produits WHERE id_produit = ".$id;
@@ -60,21 +78,19 @@ class Bdd
     var_dump($sql);
   }
 
-  public function addProduit($img, $nom, $prix, $dispo, $qte, $type)
+  public function addProduit($img, $nom, $prix, $dispo, $qte, $rayon)
   {
-    echo("coucou");
-    $sql = "INSERT INTO produits(img_produit, nom_produit, prix_produit, dispo_produit, qte_produit, type_produit) 
-            VALUES(:img, :nom, :prix, :dispo, :qte, :type ) ";
-
+    $sql = "INSERT INTO produits(img_produit, nom_produit, prix_produit, dispo_produit, qte_produit, fk_rayon) 
+            VALUES(:img, :nom, :prix, :dispo, :qte, :rayon) ";
+            
     $query =  $this->bdd->prepare($sql);
     $query->execute(array(":img" => $img,
                           ":nom" => $nom,
                           ":prix" => $prix,
                           ":dispo" => $dispo,
                           ":qte" => $qte,
-                          ":type" => $type));
+                          ":rayon" => $rayon));
     return $query->fetchAll();
   }
-
 }
 

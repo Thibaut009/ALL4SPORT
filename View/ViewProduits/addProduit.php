@@ -41,8 +41,13 @@
         </div>
 
         <div class="form-group">
-          <label for="qte">Type du produit</label>
-          <input type="text" name="type" id="type"/>
+          <label for="rayon">Rayon du produit</label>
+          <br>
+          <select  name="rayon[]" id="rayon">
+          <?php foreach($listRayon as $rayon){ ?> 
+            <option value="<?= $rayon['id_rayon'] ?>"><?= $rayon['nom_rayon'] ?></option>
+          <?php } ?>
+          </select>
         </div>
 
         <input class="submit" type="submit" value="Ajouter">

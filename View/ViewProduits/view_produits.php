@@ -13,38 +13,50 @@
 
   <body>
     
+  <div class="header">
+    <div class="lien-nav">
+      <a class="link_gestion" href="../Controller/gestionProduits_controller.php">Gestion produits</a>
+    </div>
+
+    <form method="post" action="../Controller/produits_controller.php">
+      <div class="rayon-nav">
+        <select  name="rayon[]" id="rayon">
+        <?php foreach($listRayon as $rayon){ ?> 
+          <option value="<?= $rayon['id_rayon'] ?>"><?= $rayon['nom_rayon'] ?></option>
+        <?php } ?>
+        </select>
+        <input class="submit" type="submit" value="Selectionner">
+      </div>
+    </form>
+
+    <div class="cart-nav">
+      <div class="icon">
+        <i class="fas fa-shopping-cart"></i>
+        <span>Cart</span>
+      </div>
+      <div class="item-count">0</div>
+    </div>
+  </div>
     
-    <div class="wrapper">
+  <div class="wrapper">
 
-      <div class="lien-nav">
-        <a class="link_gestion" href="../Controller/gestionProduits_controller.php">Gestion produits</a>
-      </div>
-
-      <div class="cart-nav">
-        <div class="icon">
-          <i class="fas fa-shopping-cart"></i>
-          <span>Cart</span>
+    <?php foreach($produits as $produit){ ?> 
+    <div class="card">
+      <img src="<?= $produit['img_produit'] ?>" alt="">
+      <div class="content">
+        <div class="row">
+          <div class="details">
+            <span><?= $produit['nom_produit'] ?></span>
+          </div>
+          <div class="price">$<?= $produit['prix_produit'] ?></div>
         </div>
-        <div class="item-count">0</div>
-      </div>
-
-      <?php foreach($produits as $produit){ ?> 
-      <div class="card">
-        <img src="<?= $produit['img_produit'] ?>" alt="">
-        <div class="content">
-          <div class="row">
-            <div class="details">
-              <span><?= $produit['nom_produit'] ?></span>
-            </div>
-            <div class="price">$<?= $produit['prix_produit'] ?></div>
-          </div>
-          <div class="buttons">
-            <a href="produits_controller.php?id=<?= $produit['id_produit'] ?>">View produit</a> 
-            <button class="cart-btn">Add to Cart</button>
-          </div>
+        <div class="buttons">
+          <a href="produits_controller.php?id=<?= $produit['id_produit'] ?>">View produit</a> 
+          <button class="cart-btn">Add to Cart</button>
         </div>
       </div>
-      <?php } ?>
+    </div>
+    <?php } ?>
 
     </div>
     

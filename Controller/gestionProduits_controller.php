@@ -10,6 +10,7 @@ if (isset($_GET['id'])) {
   $produitById = $bdd->getProduitById($id);
   require "../View/ViewProduits/updateProduit.php";
   //Tu éxécute la requête, et fait un affichage classique...
+
 } else {
   $produits = $bdd->getProduits();
   require "../View/ViewProduits/gestionProduits.php";
