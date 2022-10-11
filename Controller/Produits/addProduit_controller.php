@@ -1,9 +1,9 @@
 <?php
 
-require_once "../Model/bdd.php";
+require_once "../../Model/bdd.php";
 $bdd = new Bdd();
 $listRayon = $bdd->getRayon();
-require "../View/ViewProduits/addProduit.php";
+require "../../View/ViewProduits/addProduit.php";
 
 
 if (!empty($_POST['img']) && !empty($_POST['nom']) && !empty($_POST['prix']) && !empty($_POST['dispo']) && !empty($_POST['qte']) && !empty($_POST['rayon'])) {
@@ -16,6 +16,6 @@ if (!empty($_POST['img']) && !empty($_POST['nom']) && !empty($_POST['prix']) && 
 
   $bdd->addProduit($img, $nom, $prix, $dispo, $qte, $rayon);
 
-  header("Location: ../Controller/gestionProduits_controller.php");
+  header("Location: ../Produits/gestionProduits_controller.php");
 }
 

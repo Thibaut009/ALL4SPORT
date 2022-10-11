@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../View/css/view_produits.css">
+    <link rel="stylesheet" href="../../View/css/view_produits.css">
     <title>ALL4SPORT</title>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -15,10 +15,10 @@
     
   <div class="header">
     <div class="lien-nav">
-      <a class="link_gestion" href="../Controller/gestionProduits_controller.php">Gestion produits</a>
+      <a class="link_gestion" href="../Produits/gestionProduits_controller.php">Gestion produits</a>
     </div>
 
-    <form method="post" action="../Controller/produits_controller.php">
+    <form method="post" action="../Produits/produits_controller.php">
       <div class="rayon-nav">
         <select  name="rayon[]" id="rayon">
         <?php foreach($listRayon as $rayon){ ?> 

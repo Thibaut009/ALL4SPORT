@@ -1,6 +1,6 @@
 <?php
 
-require_once "../Model/bdd.php";
+require_once "../../Model/bdd.php";
 
 $bdd = new Bdd();
 
@@ -14,6 +14,6 @@ if (!empty($_POST['img']) && !empty($_POST['nom']) && !empty($_POST['prix']) && 
 
   $bdd->updateProduitById($id, $img, $nom, $prix, $dispo, $qte );
 
-  header("Location: ../Controller/gestionProduits_controller.php");
+  header("Location: ../Produits/gestionProduits_controller.php");
 }
 

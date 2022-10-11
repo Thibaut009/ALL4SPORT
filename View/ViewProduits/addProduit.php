@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../View/css/addProduit.css">
+    <link rel="stylesheet" href="../../View/css/addProduit.css">
     <title>ALL4SPORT</title>
   </head>
 
   <body>
     
-    <form method="POST" action="../Controller/addProduit_controller.php" > 
+    <form method="POST" action="../Controller/Produits/addProduit_controller.php" > 
       <div class="head-title">
         <h2>Ajouter un produit</h2>
       </div>

@@ -10,7 +10,7 @@
 
   <body>
     
-    <form method="POST" action="../Controller/updateProduit_controller.php" >
+    <form method="POST" action="../Produits/updateProduit_controller.php" >
     <?php foreach($produitById as $produit){ ?> 
         <p>id produit : <input type="text" name="id" value="<?= $produit['id_produit'] ?>"></p>
         <p>image produit : <input type="text" name="img" value="<?= $produit['img_produit'] ?>" /></p>
