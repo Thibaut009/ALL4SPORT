@@ -1,3 +1,3 @@
 <?php
 
-header('Location: ./Controller/produits/produits_controller.php');
+header('Location: ./Controller/home_controller.php');

@@ -18,10 +18,36 @@ class Bdd
   }
 
 
+
+  // Auth_login BDD
+  public function login($pseudo, $hash)
+  {
+    $sql = "SELECT pseudo FROM users WHERE pseudo = :pseudo and mdp = :pwd";
+    
+    $query = $this->bdd->prepare($sql);
+    $query->execute(array(":pseudo" => $pseudo,
+                          ":pwd" => $hash));
+    return $query->fetch();
+  }
+
+  // Auth_register BDD
+  public function register($pseudo, $mail, $hash)
+  {
+    $sql = "INSERT INTO users(pseudo, mail, mdp) VALUES (:pseudo, :mail, :mdp)";
+            
+    $query = $this->bdd->prepare($sql);
+    $query->execute(array(":pseudo" => $pseudo,
+                          ":mail" => $mail,
+                          ":mdp" => $hash));
+    return $query->fetchAll();
+  }
+
+
   // Rayon BDD
   public function getRayon()
   {
     $sql = "SELECT * FROM rayon";
+
     $query =  $this->bdd->prepare($sql);
     $query->execute();
     return $query->fetchAll();
@@ -31,6 +57,7 @@ class Bdd
   public function getProduits()
   {
     $sql = "SELECT * FROM produits";
+
     $query =  $this->bdd->prepare($sql);
     $query->execute();
     return $query->fetchAll();
@@ -72,6 +99,7 @@ class Bdd
   public function deleteProduitById($id)
   {
     $sql = "DELETE FROM produits WHERE id_produit = ".$id;
+
     $query =  $this->bdd->prepare($sql);
     $query->execute();
     return $query->fetchAll();

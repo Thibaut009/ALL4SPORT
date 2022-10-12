@@ -1,7 +1,6 @@
 <?php
 
 require_once "../../Model/bdd.php";
-
 $bdd = new Bdd();
 
 if (!empty($_POST['img']) && !empty($_POST['nom']) && !empty($_POST['prix']) && !empty($_POST['dispo']) && !empty($_POST['qte'])) {
