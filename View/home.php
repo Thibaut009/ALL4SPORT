@@ -13,20 +13,68 @@
         <nav>
             <div class="header">
                 <img class="logo" src="../View/img/home/ALL4SPORT.png" alt="logo ALL4SPORT" height=50px>
-                <a href="#">Home</a>
-                <a href="../Controller/Produits/produits_controller.php">Shop</a>
-                <a href="#">Contact Us</a>
+                <a class="nav" href="#">Home</a>
+                <a class="nav" href="../Controller/Produits/produits_controller.php">Shop</a>
+                <a class="nav" href="#">Contact Us</a>
+            
+                  <?php if (!isset($_SESSION['pseudo'])){  
+                    echo"<a class='nav login' href='../Controller/Auth/login_controller.php'>login</a>";
+                    echo"<a class='nav register' href='../Controller/Auth/register_controller.php'>register</a>";
+                    } else {  
+                    echo"
+                    <div class='container-menu'>
+                        <img src='../View/img/home/user.png' class='user-pic' onclick='toggleMenu()'>
+                            <div class='sub-menu-wrap' id='subMenu'> 
+                                <div class='sub-menu'>
+                                    <div class='user-info'>
+                                        <h2> Simon Ravaut </h2>
+                                    </div>
+                                    <hr>
 
-                <?php if (!isset($_SESSION['pseudo'])){  
-                    echo"<a class='login' href='../Controller/Auth/login_controller.php'>login</a>";
-                    echo"<a class='register' href='../Controller/Auth/register_controller.php'>register</a>";
-                } else {  
-                   echo" <a href='#'>Profil</a>";
-                 echo"   <a href='../Controller/Auth/logout_controller.php'>Log Out</a>";
-                }; ?>
+                                    <a href='#' class='sub-menu-link'>
+                                        <img src='../View/img/home/profile.png'>
+                                        <p> Edit Profile </p>
+                                        <span><span>
+                                    </a>
+
+                                    <a href='#' class='sub-menu-link'>
+                                        <img src='../View/img/home/setting.png'>
+                                        <p> Settings </p>
+                                        <span><span>
+                                    </a>
+
+                                    <a href='#' class='sub-menu-link'>
+                                        <img src='../View/img/home/help.png'>
+                                        <p> Help </p>
+                                        <span><span>
+                                    </a>
+
+                                    <a href='../Controller/Auth/logout_controller.php' class='sub-menu-link'>
+                                        <img src='../View/img/home/logout.png'>
+                                        <p> LogOut </p>
+                                        <span><span>
+                                    </a> 
+                                </div>
+                            </div>
+                        </div>";
+                     } ?>
+
+                     <script>
+                        let subMenu = document.getElementById("subMenu");
+
+                        function toggleMenu() {
+                            subMenu.classList.toggle("open-menu");
+                        }
+                     </script>
             </div>
         </nav>
     </header>
+
+
+
+
+
+
 
     <section class="section1">
          <div class="img"> 
