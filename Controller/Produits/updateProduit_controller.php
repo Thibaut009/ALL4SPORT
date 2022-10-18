@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once "../../Model/bdd.php";
 $bdd = new Bdd();
 

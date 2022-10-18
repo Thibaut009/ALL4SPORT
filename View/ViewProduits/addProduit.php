@@ -10,7 +10,7 @@
 
   <body>
     
-    <form method="POST" action="../Controller/Produits/addProduit_controller.php" > 
+    <form method="POST" action="../Produits/addProduit_controller.php" > 
       <div class="head-title">
         <h2>Ajouter un produit</h2>
       </div>

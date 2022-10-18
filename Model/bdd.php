@@ -33,12 +33,14 @@ class Bdd
   // Auth_register BDD
   public function register($pseudo, $mail, $hash)
   {
-    $sql = "INSERT INTO users(pseudo, mail, mdp) VALUES (:pseudo, :mail, :mdp)";
-            
+    $sql = "INSERT INTO users(pseudo, mail, mdp, date_inscription) VALUES (:pseudo, :mail, :mdp, :dateI)";
+    
+    $d = new DateTime();
     $query = $this->bdd->prepare($sql);
     $query->execute(array(":pseudo" => $pseudo,
                           ":mail" => $mail,
-                          ":mdp" => $hash));
+                          ":mdp" => $hash,
+                          ":dateI" => $d->format("Y-m-d H:i:s")));
     return $query->fetchAll();
   }
 
