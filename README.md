@@ -3,7 +3,8 @@ requête sql :
 afficher la liste des produits du panier d'un client :
 
 SELECT nom_produit, qte 
-FROM panier_produits 
-INNER JOIN panier on fk_panier = id_panier
-INNER JOIN produits on fk_produit = id_produit
-INNER JOIN users on fk_user = id_user AND id_user = 36
+FROM users AS u
+INNER JOIN panier on u.fk_panier = id_panier
+INNER JOIN panier_produits AS p on p.fk_panier = id_panier
+INNER JOIN produits on fk_produit = id_produit 
+WHERE id_user = 36
