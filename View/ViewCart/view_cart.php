@@ -12,27 +12,31 @@
       <table>
           <thead>
               <tr>
-              <th style="border-top-left-radius: 20px; color: #fff;">img</th>
-              <th style="color: #fff;">nom</th>
-              <th style="color: #fff;">prix</th>
-              <th style="color: #fff;">disponibilité</th>
-              <th style="color: #fff;">quantité</th>
-              <th style="color: #fff;">update</th>
-              <th style="border-top-right-radius: 20px; color: #fff;">delete</th>
+              <th style="border-top-left-radius: 20px;"></th>
+              <th>img</th>
+              <th>nom</th>
+              <th>prix</th>
+              <th>disponibilité</th>
+              <th>quantité</th>
+              <th>update</th>
+              <th style="border-top-right-radius: 20px;">delete</th>
               </tr>
           </thead>
           <tbody>
-              <?php foreach($listProduitsCart as $produit){ ?> 
+          <?php foreach($ProduitsCart as $produit){ ?> 
+          <form method="POST" action="../Cart/updateCart_controller.php">
               <tr>
+                  <td style="width: 10px;"><input type="hidden" name="id" value="<?= $produit['id_panier_produit'] ?>"></td>
                   <td><img src="<?= $produit['img_produit'] ?>" alt=""></td>
                   <td><?= $produit['nom_produit'] ?></td>
                   <td><?= $produit['prix_produit'] ?></td>
                   <td><?= $produit['dispo_produit'] ?></td>
-                  <td><?= $produit['qte'] ?></td>
-                  <td><a style="color: red; text-decoration: none;" href="gestionProduits_controller.php?id=<?= $produit['id_produit'] ?>"> update</a></td>
-                  <td><a style="color: red; text-decoration: none;" href="deleteProduit_controller.php?id=<?= $produit['id_produit'] ?>"> delete</a></td>
+                  <td><input style="width: 30px;" type="text" name="qte" value="<?= $produit['qte'] ?>"></td>
+                  <td><input class="submit" type="submit" value="update"></td>
+                  <td><a style="color: red; text-decoration: none;" href="deleteCart_controller.php?id=<?= $produit['id_panier_produit'] ?>"> delete</a></td>
               </tr>
-              <?php } ?>
+            </form>
+           <?php } ?>
           </tbody>
       </table>
   </body>

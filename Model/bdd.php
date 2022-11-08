@@ -33,8 +33,20 @@ class Bdd
   // Auth_register BDD
   public function register($pseudo, $mail, $hash)
   {
-    $sql = "INSERT INTO users(pseudo, mail, mdp, date_inscription) VALUES (:pseudo, :mail, :mdp, :dateI)";
-    
+    $sql = "INSERT INTO panier(user_mail) VALUES (:mail);
+            
+            INSERT INTO users (fk_panier, pseudo, mail, mdp, date_inscription)
+            VALUES (
+              (SELECT id_panier
+              FROM panier
+              WHERE user_mail = :mail
+              ),
+              :pseudo,
+              :mail,
+              :mdp,
+              :dateI
+            )";
+
     $d = new DateTime();
     $query = $this->bdd->prepare($sql);
     $query->execute(array(":pseudo" => $pseudo,
@@ -126,7 +138,7 @@ class Bdd
   // Produits Cart BDD
   public function getProduitsCart($session)
   {
-    $sql = "SELECT img_produit, nom_produit, prix_produit, dispo_produit, qte FROM users AS u 
+    $sql = "SELECT id_panier_produit, img_produit, nom_produit, prix_produit, dispo_produit, qte FROM users AS u 
             INNER JOIN panier on u.fk_panier = id_panier 
             INNER JOIN panier_produits AS p_p on p_p.fk_panier = id_panier 
             INNER JOIN produits on fk_produit = id_produit 
@@ -135,6 +147,27 @@ class Bdd
     $query =  $this->bdd->prepare($sql);
     $query->execute();
     return $query->fetchAll();
+  }
+
+  public function updateCartProduit($qte, $id) 
+  {
+    $sql = "UPDATE panier_produits
+            SET qte = '$qte' 
+            WHERE id_panier_produit = '".$id."'";
+
+    $query =  $this->bdd->prepare($sql);
+    $query->execute();
+    return $query->fetchAll();
+  }
+
+  public function deleteProduitCartById($id)
+  {
+    $sql = "DELETE FROM panier_produits WHERE id_panier_produit = ".$id;
+
+    $query =  $this->bdd->prepare($sql);
+    $query->execute();
+    return $query->fetchAll();
+    var_dump($sql);
   }
 }
 
