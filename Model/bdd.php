@@ -122,5 +122,19 @@ class Bdd
                           ":rayon" => $rayon));
     return $query->fetchAll();
   }
+
+  // Produits Cart BDD
+  public function getProduitsCart($session)
+  {
+    $sql = "SELECT img_produit, nom_produit, prix_produit, dispo_produit, qte FROM users AS u 
+            INNER JOIN panier on u.fk_panier = id_panier 
+            INNER JOIN panier_produits AS p_p on p_p.fk_panier = id_panier 
+            INNER JOIN produits on fk_produit = id_produit 
+            WHERE pseudo = '".$session."'";
+
+    $query =  $this->bdd->prepare($sql);
+    $query->execute();
+    return $query->fetchAll();
+  }
 }
 

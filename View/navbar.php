@@ -5,6 +5,7 @@
             <a class="nav" href="#">Home</a>
             <a class="nav" href="../Controller/Produits/produits_controller.php">Shop</a>
             <a class="nav" href="#">Contact Us</a>
+            <a class="nav" href="../Controller/Cart/cart_controller.php">Cart</a>
 
             <?php if (!isset($_SESSION['pseudo'])): ?>
                 <a class='nav login' href='../Controller/Auth/login_controller.php'>login</a>
