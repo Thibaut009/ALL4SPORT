@@ -33,13 +33,12 @@ class Bdd
   // Auth_register BDD
   public function register($pseudo, $mail, $hash)
   {
-    $sql = "INSERT INTO panier(user_mail) VALUES (:mail);
+    $sql = "INSERT INTO panier(id_panier) VALUES ('');
             
             INSERT INTO users (fk_panier, pseudo, mail, mdp, date_inscription)
             VALUES (
-              (SELECT id_panier
+              (SELECT MAX(id_panier)
               FROM panier
-              WHERE user_mail = :mail
               ),
               :pseudo,
               :mail,
