@@ -33,7 +33,7 @@ class Bdd
   // Auth_register BDD
   public function register($pseudo, $mail, $hash)
   {
-    $sql = "INSERT INTO panier(id_panier) VALUES ('');
+    $sql = "INSERT INTO panier(id_panier) VALUES (NULL);
             
             INSERT INTO users (fk_panier, pseudo, mail, mdp, date_inscription)
             VALUES (
@@ -135,6 +135,26 @@ class Bdd
   }
 
   // Produits Cart BDD
+  public function addProduitCart($pseudo, $id_produit)
+  {
+    $sql = "INSERT INTO panier_produits (fk_panier, fk_produit, qte)
+            VALUES (
+              (SELECT fk_panier
+              FROM users WHERE pseudo = :pseudo
+              ),
+              (SELECT id_produit
+              FROM produits WHERE id_produit = :id_produit
+              ),
+              :qte
+            )";
+
+    $query = $this->bdd->prepare($sql);
+    $query->execute(array(":pseudo" => $pseudo,
+                          ":id_produit" => $id_produit,
+                          ":qte" => '1'));
+    return $query->fetchAll();
+  }
+
   public function getProduitsCart($session)
   {
     $sql = "SELECT id_panier_produit, img_produit, nom_produit, prix_produit, dispo_produit, qte FROM users AS u 

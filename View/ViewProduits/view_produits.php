@@ -52,7 +52,7 @@
             </div>
             <div class="buttons">
               <a href="produits_controller.php?id=<?= $produit['id_produit'] ?>">View produit</a> 
-              <button class="cart-btn">Add to Cart</button>
+              <a href="../../Controller/Cart/addProduitCart_controller.php?id_produit=<?= $produit['id_produit'] ?>" class="cart-btn">Add to Cart</a>
             </div>
           </div>
         </div>
