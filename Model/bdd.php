@@ -6,9 +6,9 @@ class Bdd
 
   public function __construct()
   {
-    $dsn = 'mysql:dbname=ALL4SPORT;host=127.0.0.1:3306';
+    $dsn = 'mysql:dbname=ALL4SPORT;host=127.0.0.1:8889';
     $dbUser = 'root';
-    $dbPwd = '';
+    $dbPwd = 'root';
 
     try {
       $this->bdd = new PDO($dsn, $dbUser, $dbPwd);
